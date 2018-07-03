@@ -35,6 +35,7 @@ namespace Unit_35_Final_Program
         {
             for (int i = 1; i < table.Count; i++)
             {
+                //here the veloicity is calculated by the altimeter/time
                 double dt = table[i].time - table[i - 1].time;
                 double dalt = table[i].altimeter - table[i - 1].altimeter;
                 table[i].velocity = dalt / dt;
@@ -44,6 +45,7 @@ namespace Unit_35_Final_Program
         {
             for (int i = 1; i < table.Count; i++)
             {
+                //here, the acceleration is calculated by the velocity/time
                 double dt = table[i].time - table[i - 1].time;
                 double dv = table[i].velocity - table[i - 1].velocity;
                 table[i].acceleration = dv / dt;
@@ -72,6 +74,7 @@ namespace Unit_35_Final_Program
                     }
                     calculateVelocity();
                     calculateAcceleration();
+                    //this is where the program can go into the files and find the csv file
                 }
                 catch (IOException)
                 {
@@ -91,7 +94,7 @@ namespace Unit_35_Final_Program
                 }
             }
         }
-
+        //this is the outputs i have created if the code encounters any unexpected errors
         private void saveCSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.FileName = "";
@@ -116,7 +119,7 @@ namespace Unit_35_Final_Program
                 }
             }
         }
-
+        //this is where the program can save the csv files
         private void savePNGToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.FileName = "";
@@ -134,7 +137,7 @@ namespace Unit_35_Final_Program
                 }
             }
         }
-
+        //this is where the program saves the graphs as a PNG file
         private void accelerationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -157,7 +160,7 @@ namespace Unit_35_Final_Program
             chart1.ChartAreas[0].AxisY.Title = "acceleration/m/s";
             chart1.ChartAreas[0].RecalculateAxesScale();
         }
-
+        //here, the graph for acceleration is generated
         private void velocityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -180,7 +183,7 @@ namespace Unit_35_Final_Program
             chart1.ChartAreas[0].AxisY.Title = "velocity/m/s";
             chart1.ChartAreas[0].RecalculateAxesScale();
         }
-
+        //this is where the velocity graph is generated
         private void altitudeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             chart1.Series.Clear();
@@ -202,7 +205,7 @@ namespace Unit_35_Final_Program
             chart1.ChartAreas[0].AxisX.Title = "time/s";
             chart1.ChartAreas[0].AxisY.Title = "altitude/m";
             chart1.ChartAreas[0].RecalculateAxesScale();
-        }
+        }//this is where the altitude graph is generated
     }
 }
 
